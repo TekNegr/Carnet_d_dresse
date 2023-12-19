@@ -86,6 +86,28 @@ class Sign_Up_Client(Client):
         self.Submit_button.pack()
         
 
+class Home_Client(Client):
+    def init(self, user: User):
+        super().init()
+        self.user = user
+        welcome_message = f"Welcome {self.user.name}!!!"
+        self.label = tk.Label(self.root, text="Please Login!", font=('Arial',18))
+        self.Mainframe = tk.Frame(self.root)
+        self.Mainframe.rowconfigure(0, weight=1)
+        self.Mainframe.columnconfigure(0,weight=1)
+        self.Mainframe.columnconfigure(1,weight=1)
+        self.contact_list = tk.Listbox(self.Mainframe, width=50, height=100, font=("Arial",18))
+        
+        
+    def pack(self):
+        self.label.pack()
+        self.Mainframe.pack()
+        self.contact_list.pack()
+        
+    
+
+
+
 #Client page class for Login
 class Login_Client(Client):
     def __init__(self):
@@ -122,7 +144,9 @@ class Login_Client(Client):
 
 #Testing of the Client
 #client = Login_Client()
-client = Sign_Up_Client()
+#client = Sign_Up_Client()
+user = User("Henin","N1","n1@mail.com","123kk")
+client = Home_Client(user)
 client.pack()       
 
 client.root.mainloop()
