@@ -87,11 +87,11 @@ class Sign_Up_Client(Client):
         
 
 class Home_Client(Client):
-    def init(self, user: User):
-        super().init()
+    def __init__(self, user: User):
+        super().__init__()
         self.user = user
         welcome_message = f"Welcome {self.user.name}!!!"
-        self.label = tk.Label(self.root, text="Please Login!", font=('Arial',18))
+        self.label = tk.Label(self.root, text=welcome_message, font=('Arial',18))
         self.Mainframe = tk.Frame(self.root)
         self.Mainframe.rowconfigure(0, weight=1)
         self.Mainframe.columnconfigure(0,weight=1)
